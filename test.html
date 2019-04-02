@@ -1,0 +1,31 @@
+<body ng-app="quizApp">
+<div ng-controller="technologies">
+	<div ng-repeat="x in technologyar">
+	{{x}}
+	</div>
+</div>
+<div ng-controller="questions">
+	<div ng-repeat="x in questionar">
+		{{$index+1}}.{{x.question}}
+		<input type="radio" name="q{{$index+1}}">{{x.o1}}
+		<input type="radio" name="q{{$index+1}}">{{x.o2}}
+		<input type="radio" name="q{{$index+1}}">{{x.o3}}
+		<input type="radio" name="q{{$index+1}}">{{x.o4}}
+	</div>
+	<h2>Current Question</h2>
+		
+		{{$index+1}}.{{currentque.question}}
+		<input type="radio" name="q{{$index+1}}">{{currentque.o1}}
+		<input type="radio" name="q{{$index+1}}">{{currentque.o2}}
+		<input type="radio" name="q{{$index+1}}">{{currentque.o3}}
+		<input type="radio" name="q{{$index+1}}">{{currentque.o4}}<br>
+		<button ng-click="prev()">Prev</button>
+		<button ng-click="next()">Next</button>
+	<div ng-repeat="x in questionar">
+		<button ng-click="currentq($index)">{{$index+1}}</button>
+	</div>
+	
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script src="js/custom.js"></script>
+</body>

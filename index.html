@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Quiz Project</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="mainModule">
+  <section class="top">
+  		<div class="container">
+        	<div class="row">
+            	<div class="col-md-12 text-center">
+                	<h1><a href="index.html">QUIZ APPLICTION</a></h1>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="row">
+            	<nav class="navbar navbar-default menu-part">
+  
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">HTML5</a></li>
+        <li><a href="#">Css3</a></li>
+        <li><a href="#">Javascript</a></li>
+        <li><a href="#">Jquery</a></li>
+        <li><a href="#">BOOTSTRAP</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Login</button>
+      </form>
+      
+    </div><!-- /.navbar-collapse -->
+  
+</nav>
+            </div>
+        </div>
+  </section>
+  
+  <section class="pannel-1">
+  		<div class="container">
+        	<div class="row">
+            	<div class="col-md-12">
+            	<div class="panel panel-default p1">
+                      <div class="panel-body">
+                        Please Read The Following Instruction Carefully
+                      </div>
+                </div>
+                </div>
+            </div>
+        </div>
+  </section>
+  
+  <section class="technologies" ng-controller="techlistcon as tlc">
+  		<div class="container">
+        	<div class="row">
+            	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-repeat="tech in tlc.techlist">
+						<div class="box box-block bg-white tile tile-1 mb-2">
+							<div class="t-content">
+								<h1 class="mb-1">{{tech.name}}</h1>
+								<a href="" data-toggle="modal" data-target="#login-modal" ng-click="tlc.techlist_full(tech)" class="btn btn-info pull-right">More>></a>
+							</div>
+						</div>
+			     </div>
+            </div>
+        </div>
+    		<div class="modal fade" id="login-modal">
+    		  <div class="modal-dialog">
+    			  <div class="modal-content">
+    				  <div class="modal-body">
+    						<div class="modal-header">
+    							<button type="button" class="close" data-dismiss="modal">&times;</button>
+    							<h4 class="modal-title">{{tlc.tech_full.name}}</h4>
+    						</div>
+    					   <table class="table">
+    							  <tr>
+    								<td><img ng-src="{{tlc.tech_full.img}}" width="100"></td>
+    								<td>{{tlc.tech_full.desc}}</td>
+    							  </tr>
+    					   </table>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+  </section>
+  
+  <section class="pannel-1">
+  		<div class="container">
+        	<div class="row">
+            	<div class="col-md-12">
+            	<div class="panel panel-default p1">
+                      <div class="panel-body">
+                        Online Exam : You Can Test Your Skills
+                      </div>
+                </div>
+                </div>
+            </div>
+        </div>
+  </section>
+  
+  
+  <section class="qustions" ng-controller="questionlistcon">
+  		<div class="container">
+        	<div class="row">
+            	<div class="col-md-7">
+                	<div class="q-box">
+                    	<div class="question">
+                    	     <h4>{{currentIndex+1}}.{{currentque.question}}</h4>
+                      </div>
+                      <div class="options" >
+                        	<ul>
+								<li><input type="radio" name="q{{$index+1}}">{{currentque.o1}}</li>
+								<li><input type="radio" name="q{{$index+1}}">{{currentque.o2}}</li>
+								<li><input type="radio" name="q{{$index+1}}">{{currentque.o3}}</li>
+								<li><input type="radio" name="q{{$index+1}}">{{currentque.o4}}</li><br>
+            				</ul>
+          							
+          				<button class="btn btn-warning" ng-click="next()">Next</button>	
+                        <div ng-init="question=25">
+                          <button class="btn btn-warning" ng-hide="hide()" ng-show="question > 12">Finish</button>
+                        </div>			
+        			</div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                	<div class="q-box">
+                    <h4>Question Palette</h4>
+                        <div id="main_right">
+							<div class="questionpallat">
+								<ul>
+									<li ng-repeat="x in questions">
+										<a class="btn btn-danger buttons" ng-click="currentq($index)">{{$index+1}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </section>
+  
+  
+<footer class="footer">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12 text-center">
+            	<h1><a href="index.html">QUIZ APPLICTION</a></h1>
+                <p>Copyright © 2017 quiz application, All rights reserved.
+            </div>
+        </div>
+    </div>	
+</footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
+	<script src="js/controllers/techlist.js"></script>
+  </body>
+</html>
